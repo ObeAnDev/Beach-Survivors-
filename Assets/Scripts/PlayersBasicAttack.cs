@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class PlayersBasicAttack : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int damage;
+    public float attackRange;
+
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
