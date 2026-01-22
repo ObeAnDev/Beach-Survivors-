@@ -16,7 +16,7 @@ public class PlayersBasicAttack : MonoBehaviour
         
     }
 
-    
+   
     void Update()
     {
         EnemyReach();
@@ -42,16 +42,14 @@ public class PlayersBasicAttack : MonoBehaviour
                 Debug.Log("In sphere");
                 Attack();
             }
-        }
-            
-        
-        
+        }        
     }
-    private void OnCollisionEnter(Collision collision)
+
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             
         }
-    }
+    }*/
 }
