@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerControllerManager : MonoBehaviour
 {
-    public float speed;
-     Rigidbody rb;
+    [SerializeField] float speed;
+    public float Speed => speed;
+
+    Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
-
 
     void Update()
     {

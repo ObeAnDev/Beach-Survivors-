@@ -4,10 +4,10 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class PlayersBasicAttack : MonoBehaviour
+public class PlayerRangeManager: MonoBehaviour
 {
-    public int damage;
-    public float attackRange;
+    [SerializeField] float attackRange;
+    public float AttackRange => attackRange;
 
     public LayerMask enemyLayer;
 
@@ -15,15 +15,10 @@ public class PlayersBasicAttack : MonoBehaviour
     {
         
     }
-
-   
+  
     void Update()
     {
         EnemyReach();
-    }
-    public void Attack()
-    {
-
     }
     private void OnDrawGizmos()
     {
@@ -40,16 +35,7 @@ public class PlayersBasicAttack : MonoBehaviour
             if (reached.gameObject.CompareTag("Enemy"))
             {
                 Debug.Log("In sphere");
-                Attack();
             }
         }        
     }
-
-    /*private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            
-        }
-    }*/
 }
