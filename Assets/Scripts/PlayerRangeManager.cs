@@ -11,11 +11,6 @@ public class PlayerRangeManager: MonoBehaviour
 
     public LayerMask enemyLayer;
 
-    void Start()
-    {
-        
-    }
-  
     void Update()
     {
         EnemyReach();
