@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayersHandManager : MonoBehaviour 
+public class PlayersHandManager : PlayerWeapon
 {
-    [SerializeField] int damage;
-    public int Damage => damage;
 
     void Update()
     {
@@ -19,7 +17,17 @@ public class PlayersHandManager : MonoBehaviour
 
         EnemyHealthManager enemyHealthManager = collision.gameObject.GetComponent<EnemyHealthManager>();
 
-        if (enemyHealthManager != null)
-            enemyHealthManager.TakeDamage(damage);
+        if (enemyHealthManager != null) ;
+            //enemyHealthManager.TakeDamage(damage);
+    }
+
+    public override void Attack()
+    {
+       
+    }
+
+    public override void Init()
+    {
+
     }
 }
