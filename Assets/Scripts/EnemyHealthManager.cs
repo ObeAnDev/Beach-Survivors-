@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour
 {
-    [SerializeField] int health;
-    public int Health => health;
-    public void TakeDamage(int _damage)
+    [SerializeField] float health;
+    public float Health => health;
+    public void TakeDamage(float _damage)
     {
         if (_damage <= 0) return; 
 
