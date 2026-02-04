@@ -4,10 +4,17 @@ using UnityEngine;
 
 public abstract class PlayerWeapon : MonoBehaviour
 {
-    //public float damage;
-    public float range;
-    public float speed;
-    public float attackRate;
+    [SerializeField] float damage;
+    public float Damage => damage;
+
+    [SerializeField] float range;
+    public float Range => range;
+
+    [SerializeField] float speed;
+    public float Speed => speed;
+
+    [SerializeField] float attackRate;
+    public float AttackRate => attackRate;
 
     public abstract void Attack();
 

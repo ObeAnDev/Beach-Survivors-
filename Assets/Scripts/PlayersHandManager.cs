@@ -17,8 +17,8 @@ public class PlayersHandManager : PlayerWeapon
 
         EnemyHealthManager enemyHealthManager = collision.gameObject.GetComponent<EnemyHealthManager>();
 
-        if (enemyHealthManager != null);
-            enemyHealthManager.TakeDamage(damage);
+        if (enemyHealthManager != null)
+            enemyHealthManager.TakeDamage(Damage);
     }
 
     public override void Attack()
