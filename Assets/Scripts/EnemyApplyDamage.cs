@@ -8,16 +8,26 @@ public class EnemyApplyDamage : MonoBehaviour
     [SerializeField] float damage;
     public float Damage => damage;
 
-    private void OnCollisionEnter(Collision collision)
+    public float attackRate;
+    public float timer;
+
+    private void OnCollisionStay (Collision collision)
     {
+        timer += Time.deltaTime;
+
         if (!collision.gameObject.CompareTag("Player"))
             return;
 
         PlayerHealthManager playerHealthManager = collision.gameObject.GetComponent<PlayerHealthManager>();
 
-        while (playerHealthManager != null)
+        if(playerHealthManager != null)
         {
-            playerHealthManager.TakeDamage(Damage);
+            if (timer >= attackRate)
+            {
+                playerHealthManager.TakeDamage(Damage);
+                timer = 0;
+            }
         }
     }
+
 }

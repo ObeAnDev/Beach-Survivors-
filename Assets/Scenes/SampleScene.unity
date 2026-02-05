@@ -1011,6 +1011,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  attackRate: 1
+  timer: 0
 --- !u!1 &2009835566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,6 +1270,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 69663146}
+    - target: {fileID: 6934375048353547126, guid: 1dc352c7c853ce1459c090292ceb023e,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 7920758620580119845, guid: 1dc352c7c853ce1459c090292ceb023e,
         type: 3}
       propertyPath: m_Mesh
