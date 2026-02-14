@@ -17,7 +17,7 @@ public class PlayerControllerManager : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");

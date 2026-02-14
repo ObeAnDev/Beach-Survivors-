@@ -10,6 +10,7 @@ public class EnemyAgentNavManager : MonoBehaviour
 
     void Start()
     {
+        targetPoint = GameObject.Find("Players Character (TEST)").transform;
         agent = GetComponent<NavMeshAgent>();
     }
 
