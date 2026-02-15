@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8382052323525028971}
   - component: {fileID: 1240242380665414020}
   - component: {fileID: 3029808843148110601}
+  - component: {fileID: -7036516973792010808}
   m_Layer: 3
   m_Name: Enemy Cube (TEST)
   m_TagString: Enemy
@@ -156,3 +157,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+--- !u!114 &-7036516973792010808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2344624379211357861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ff49ddd711da04ea5e8bc6be36e5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  attackRate: 2
+  timer: 0
