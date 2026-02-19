@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Image healthBar;
-    void Start()
+    void Awake()
     {
-        
+        PlayerEventBus.OnHealthChanged += HealthUpdate;
     }
 
     void Update()

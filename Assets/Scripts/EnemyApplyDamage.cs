@@ -19,7 +19,7 @@ public class EnemyApplyDamage : MonoBehaviour
             return;
 
         PlayerHealthManager playerHealthManager = collision.gameObject.GetComponent<PlayerHealthManager>();
-
+        
         if(playerHealthManager != null)
         {
             if (timer >= attackRate)

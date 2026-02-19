@@ -11,17 +11,15 @@ public class PlayerHealthManager : MonoBehaviour
     [SerializeField] float health;
     public float Health => health;
 
-    public HealthBar healthBar;
-
     public void TakeDamage(float _damage)
     {
         if (_damage <= 0) return;
 
         health -= _damage;
-        healthBar.HealthUpdate(HealthPercent);
 
         if (health < 0)
             health = 0;
+        PlayerEventBus.OnHealthChanged.Invoke(HealthPercent);
 
         if (health == 0)
             Die();

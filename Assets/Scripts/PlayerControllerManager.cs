@@ -12,6 +12,8 @@ public class PlayerControllerManager : MonoBehaviour
 
     Rigidbody rb;
 
+    public Transform playerModel;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -29,7 +31,7 @@ public class PlayerControllerManager : MonoBehaviour
         if (moveHorizontal != 0 || moveVertical != 0)
         {
             Quaternion targetRotation = Quaternion.LookRotation(movement);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            playerModel.rotation = Quaternion.RotateTowards(playerModel.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
 
   

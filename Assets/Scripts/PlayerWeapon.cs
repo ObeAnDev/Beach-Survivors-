@@ -19,4 +19,5 @@ public abstract class PlayerWeapon : MonoBehaviour
     public abstract void Attack();
 
     public abstract void Init();
+
 }

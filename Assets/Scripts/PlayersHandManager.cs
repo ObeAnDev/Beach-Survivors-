@@ -10,8 +10,9 @@ public class PlayersHandManager : PlayerWeapon
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("OnCollisionEnter");
         if (!collision.gameObject.CompareTag("Enemy"))
             return;
 
