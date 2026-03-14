@@ -5,8 +5,11 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager instance;
+    public float spawnRadius;
+    public Transform player;
 
-    public BoxCollider spawnZone;
+
+    //public BoxCollider spawnZone;
     public GameObject enemyPrefab;
     void Awake()
     {
@@ -22,16 +25,13 @@ public class SpawnManager : MonoBehaviour
     }
     public void SpawnEnemy()
     {
-        Bounds bounds = spawnZone.bounds;
+        float angle = Random.Range(0, Mathf.PI * 2);
+        float x = Mathf.Cos(angle) * spawnRadius;
+        float z = Mathf.Sin(angle) * spawnRadius;
 
-        Vector3 spawnPoint = new Vector3
-        (
-            Random.Range(bounds.min.x, bounds.max.x),
-            0,
-            Random.Range(bounds.min.z, bounds.max.z)
-        );
+        Vector3 spawnPos = new Vector3(player.position.x + x, 1f, player.position.z + z);
 
-        Instantiate(enemyPrefab, spawnPoint, Quaternion.identity);
+        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
     }
     private void Update()
     {

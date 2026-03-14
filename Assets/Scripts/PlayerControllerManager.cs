@@ -14,6 +14,15 @@ public class PlayerControllerManager : MonoBehaviour
 
     public Transform playerModel;
 
+
+    public float moveSpeed = 7f;
+
+    public float minZ = -5f;
+    public float maxZ = 5f;
+
+    private Vector3 moveDirection;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -33,7 +42,20 @@ public class PlayerControllerManager : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(movement);
             playerModel.rotation = Quaternion.RotateTowards(playerModel.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
+        //MovePlayer();
+    }
+    void MovePlayer()
+    {
+        Vector3 targetPosition = transform.position + moveDirection * moveSpeed * Time.deltaTime;
 
-  
+        targetPosition.z = Mathf.Clamp(targetPosition.z, minZ, maxZ);
+
+        transform.position = targetPosition;
+
+        if (moveDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 15f * Time.deltaTime);
+        }
     }
 }

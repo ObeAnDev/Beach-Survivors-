@@ -6,16 +6,27 @@ using UnityEngine.AI;
 public class EnemyAgentNavManager : MonoBehaviour
 {
     [SerializeField] Transform targetPoint;
-    NavMeshAgent agent;
+    public float speed;
 
     void Start()
     {
         targetPoint = GameObject.Find("Player Model").transform;
-        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
-        agent.SetDestination(targetPoint.position);
+
+        Vector3 direction = (targetPoint.position - transform.position).normalized;
+
+        transform.position += direction * speed * Time.deltaTime;
+
+        if (direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
+
     }
+
+
+    
 }
