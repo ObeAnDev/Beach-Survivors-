@@ -11,10 +11,6 @@ public class HealthBar : MonoBehaviour
         PlayerEventBus.OnHealthChanged += HealthUpdate;
     }
 
-    void Update()
-    {
-        
-    }
     public void HealthUpdate(float HealthPercent)
     {
         healthBar.fillAmount = HealthPercent;

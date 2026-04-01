@@ -17,8 +17,8 @@ public class PlayerControllerManager : MonoBehaviour
 
     public float moveSpeed = 7f;
 
-    public float minZ = -5f;
-    public float maxZ = 5f;
+    public float minZ = -7.5f;
+    public float maxZ = 7.5f;
 
     private Vector3 moveDirection;
 
@@ -42,7 +42,7 @@ public class PlayerControllerManager : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(movement);
             playerModel.rotation = Quaternion.RotateTowards(playerModel.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
-        //MovePlayer();
+        MovePlayer();
     }
     void MovePlayer()
     {

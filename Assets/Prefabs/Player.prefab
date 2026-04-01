@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  rotationSpeed: 1000
+  rotationSpeed: 10000
   playerModel: {fileID: 6149377733148471337}
   moveSpeed: 7
   minZ: -5
@@ -133,8 +133,6 @@ GameObject:
   - component: {fileID: 3205759473572198356}
   - component: {fileID: 8004713798851995141}
   - component: {fileID: 5237648770648535192}
-  - component: {fileID: 6676855204019010672}
-  - component: {fileID: 770827588864145125}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -3362,44 +3360,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.51260126
-  m_Center: {x: -0.13782932, y: 0.17368901, z: 0.12395102}
---- !u!114 &6676855204019010672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801647725763077091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1115b3820f03d408e4d3faf8abd582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  range: 0
-  speed: 0
-  attackRate: 0
---- !u!135 &770827588864145125
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801647725763077091}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.51260126
+  m_Radius: 0.4
   m_Center: {x: -0.13782932, y: 0.17368901, z: 0.12395102}
 --- !u!1 &1785619898449126787
 GameObject:
@@ -3713,8 +3674,6 @@ GameObject:
   - component: {fileID: 8529018484731130886}
   - component: {fileID: 5796152738254799931}
   - component: {fileID: 6674080142102889622}
-  - component: {fileID: 1745529690948433185}
-  - component: {fileID: 5881560626462691883}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -6942,44 +6901,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5126012
-  m_Center: {x: -0.13782929, y: 0.17368947, z: 0.123950586}
---- !u!114 &1745529690948433185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7105131979413635389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b1115b3820f03d408e4d3faf8abd582, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  range: 0
-  speed: 0
-  attackRate: 0
---- !u!135 &5881560626462691883
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7105131979413635389}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5126012
+  m_Radius: 0.4
   m_Center: {x: -0.13782929, y: 0.17368947, z: 0.123950586}
 --- !u!1 &7650843718621477672
 GameObject:
