@@ -8,7 +8,8 @@ public class PlayerControllerManager : MonoBehaviour
     [SerializeField] float speed;
     public float Speed => speed;
 
-    public float rotationSpeed;
+    [SerializeField] float rotationSpeed;
+    public float RotationSpeed => rotationSpeed;
 
     Rigidbody rb;
 
@@ -56,6 +57,13 @@ public class PlayerControllerManager : MonoBehaviour
         {
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 15f * Time.deltaTime);
+        }
+    }
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent<ItemLoot>(out ItemLoot item))
+        {
+            item.OnPickUp(gameObject);
         }
     }
 }

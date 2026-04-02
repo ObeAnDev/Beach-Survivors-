@@ -9,18 +9,26 @@ public class LvlSystemController : MonoBehaviour
 
     void Start()
     {
-        levelSystem = new LvlSystem(0, 10, 1);
+        levelSystem = new LvlSystem(0, 10, 1, 0);
     }
 
     void Update()
     {
+
+    }
+
+    public void AddExp(float expAmount)
+    {
         PlayerEventBus.OnLevelChanged.Invoke(levelSystem.LevelCrr);
 
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            levelSystem.AddExp(1);
+        levelSystem.AddExp(expAmount);
 
-            PlayerEventBus.OnExpChanged.Invoke(levelSystem.ExpCrrAmount / levelSystem.ExpNeededAmount);          
-        }
+        PlayerEventBus.OnExpChanged.Invoke(levelSystem.ExpCrrAmount / levelSystem.ExpNeededAmount);        
+    }
+    public void addCoin(int coinAmount)
+    {
+        levelSystem.AddCoin(coinAmount);
+
+        PlayerEventBus.OnCoinChange.Invoke(levelSystem.CoinAmount);
     }
 }

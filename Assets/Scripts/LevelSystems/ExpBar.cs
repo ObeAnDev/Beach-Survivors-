@@ -8,6 +8,7 @@ public class ExpBar : MonoBehaviour
 {
     [SerializeField] Image expBar;
     [SerializeField] TextMeshProUGUI lvlText;
+
     void Awake()
     {
         PlayerEventBus.OnExpChanged += expUpdate;
