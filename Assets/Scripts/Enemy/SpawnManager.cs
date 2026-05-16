@@ -8,6 +8,10 @@ public class SpawnManager : MonoBehaviour
     public float spawnRadius;
     public Transform player;
 
+    public float spawnInterval;
+    public int spawnAmount;
+
+    public float timer;
 
     //public BoxCollider spawnZone;
     public GameObject enemyPrefab;

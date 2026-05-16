@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 7865524896245066042}
   - component: {fileID: 6113421546919060021}
   - component: {fileID: 6920008917225659952}
+  - component: {fileID: -6367579455204185330}
+  - component: {fileID: -8098403342036490277}
+  - component: {fileID: 2087417638298844553}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -28,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 360963298415656980}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -50,11 +53,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  rotationSpeed: 10000
+  rotationSpeed: 5000
   playerModel: {fileID: 6149377733148471337}
   moveSpeed: 7
-  minZ: -5
-  maxZ: 5
+  minZ: -10
+  maxZ: 10
 --- !u!54 &7865524896245066042
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -119,6 +122,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 100
+--- !u!114 &-6367579455204185330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360963298415656980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb47ca87480746449b255d918ef986f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelSystem:
+    expCrrAmount: 0
+    expNeededAmount: 0
+    levelCrr: 0
+    coinAmount: 0
+--- !u!114 &-8098403342036490277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360963298415656980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1115b3820f03d408e4d3faf8abd582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  range: 0
+  speed: 0
+  attackRate: 2
+--- !u!114 &2087417638298844553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360963298415656980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b1115b3820f03d408e4d3faf8abd582, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  range: 0
+  speed: 0
+  attackRate: 0
 --- !u!1 &801647725763077091
 GameObject:
   m_ObjectHideFlags: 0
@@ -3270,7 +3322,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2461
+  m_VersionIndex: 2485
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -6811,7 +6863,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2461
+  m_VersionIndex: 2485
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

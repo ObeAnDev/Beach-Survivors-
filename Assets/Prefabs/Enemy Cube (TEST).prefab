@@ -158,6 +158,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976bef2a22a3e8f4b9b15644476c9701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatInst:
+  - {fileID: 1167881250187120728, guid: ad6dad037ac3958409fd0c048d531ffe, type: 3}
+  - {fileID: 7754350624064914511, guid: f10c6c0d72373b04b9972a8a2c8f83c7, type: 3}
+  - {fileID: 1851173917673735562, guid: 01fb762fcdf1abd4a819aed1117f4b5c, type: 3}
+  whereInst: {fileID: 5772627372950548634}
+  offset: {x: 0, y: -0.5, z: 0}
   health: 30
 --- !u!114 &-7036516973792010808
 MonoBehaviour:

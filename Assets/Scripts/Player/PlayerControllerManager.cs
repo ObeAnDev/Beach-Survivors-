@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
@@ -6,7 +6,7 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 public class PlayerControllerManager : MonoBehaviour
 {
     [SerializeField] float speed;
-    public float Speed => speed;
+    public float Speed { get { return speed; } set { speed = value; } }
 
     [SerializeField] float rotationSpeed;
     public float RotationSpeed => rotationSpeed;
