@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public EnemyHealthManager enemyHealthManager;
     public static SpawnManager instance;
     public float spawnRadius;
     public Transform player;
 
     public float spawnInterval;
-    public int spawnAmount;
+    public int spawnAmountMax;
+    public int spawnAmountCrr;
 
     public float timer;
 
     //public BoxCollider spawnZone;
     public GameObject enemyPrefab;
+
     void Awake()
     {
         if (instance == null)
@@ -35,13 +38,27 @@ public class SpawnManager : MonoBehaviour
 
         Vector3 spawnPos = new Vector3(player.position.x + x, 1f, player.position.z + z);
 
-        Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        GameObject enemyObj = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+        enemyHealthManager = enemyObj.GetComponent<EnemyHealthManager>();
+        enemyHealthManager.spawnManager = this;
+
+        spawnAmountCrr++;
+    }
+    public void RemoveOne()
+    {
+        spawnAmountCrr--;
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        timer += Time.deltaTime;
+
+        if (timer >= spawnInterval)
         {
-            SpawnEnemy();
+            for (int i = spawnAmountCrr; i < spawnAmountMax; i++)
+            {
+                SpawnEnemy();
+            }
+            timer = 0f;
         }
     }
 }

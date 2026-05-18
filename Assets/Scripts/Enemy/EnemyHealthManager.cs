@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour
 {
+    public SpawnManager spawnManager;
     [SerializeField] GameObject[] whatInst;
     [SerializeField] Transform whereInst;
     [SerializeField] Vector3 offset;
@@ -28,6 +29,7 @@ public class EnemyHealthManager : MonoBehaviour
         DropOn();
 
         Destroy(gameObject);
+        spawnManager.RemoveOne();
     }
     public void DropOn()
     {

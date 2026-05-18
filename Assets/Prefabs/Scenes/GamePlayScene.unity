@@ -1062,10 +1062,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddff0176e505a0049a461a99d6be3fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHealthManager: {fileID: 0}
   spawnRadius: 50
   player: {fileID: 207953123}
-  spawnInterval: 0
-  spawnAmount: 0
+  spawnInterval: 3
+  spawnAmountMax: 15
+  spawnAmountCrr: 0
   timer: 0
   enemyPrefab: {fileID: 2344624379211357861, guid: d0e111a4beb8a894187ab9951158dc29,
     type: 3}
