@@ -7,7 +7,7 @@ public class PlayersHandManager : PlayerWeapon
 
     void Update()
     {
-        
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -24,7 +24,7 @@ public class PlayersHandManager : PlayerWeapon
 
     public override void Attack()
     {
-       
+
     }
 
     public override void Init()

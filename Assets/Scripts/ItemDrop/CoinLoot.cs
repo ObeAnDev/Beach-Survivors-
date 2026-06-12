@@ -8,7 +8,7 @@ public class CoinLoot : ItemLoot
     public int Coin => coin;
     public override void OnPickUp(GameObject player)
     {
-        player.GetComponent<LvlSystemController>().addCoin(coin);
+        player.GetComponent<LvlSystemController>().AddCoin(coin);
 
         Destroy(gameObject);
     }

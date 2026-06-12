@@ -1,19 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UpgradeCardUI : MonoBehaviour
 {
-    public UpgradeSO upgConfig;
+    public UpgradeSO data;
 
-    public TextMeshProUGUI cardText;
-    public Image imageCard;
+    public TextMeshProUGUI text;
+    public Image image;
+    public Button button;
 
-    public void InIt()
+    public void Setup(UpgradeSO upgrade)
     {
-        cardText.text = upgConfig.cardText;
-        imageCard.sprite = upgConfig.cardImage;
+        data = upgrade;
+
+        text.text = data.cardText;
+        image.sprite = data.cardImage;
+
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(Select);
+    }
+
+    void Select()
+    {
+        Debug.Log("Picked: " + data.upgradeName);
+
+        UIManager.Instance.CloseUpgradePanel();
+
+        // тут добавишь баффы
     }
 }

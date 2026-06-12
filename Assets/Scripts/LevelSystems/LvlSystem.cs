@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -10,38 +8,34 @@ public class LvlSystem
     [SerializeField] float expNeededAmount;
     [SerializeField] int levelCrr;
     [SerializeField] int coinAmount;
+
     public float ExpCrrAmount => expCrrAmount;
     public float ExpNeededAmount => expNeededAmount;
     public int LevelCrr => levelCrr;
     public int CoinAmount => coinAmount;
 
-
-    public LvlSystem(float _expCrrAmount, float _expNeededAmount, int _levelCrr, int _coinAmount)
+    public LvlSystem(float exp, float needed, int level, int coins)
     {
-        expCrrAmount = _expCrrAmount;
-        expNeededAmount = _expNeededAmount;
-        levelCrr = _levelCrr;
-        coinAmount = _coinAmount;
+        expCrrAmount = exp;
+        expNeededAmount = needed;
+        levelCrr = level;
+        coinAmount = coins;
     }
-    
+
     public void AddExp(float exp)
     {
         expCrrAmount += exp;
-        Debug.Log(expCrrAmount);
 
         while (expCrrAmount >= expNeededAmount)
         {
             LvlUp();
         }
-
-        Debug.Log(levelCrr);
     }
 
-    public void LvlUp()
+    void LvlUp()
     {
         expCrrAmount -= expNeededAmount;
-        levelCrr ++;
-
+        levelCrr++;
         expNeededAmount += 20;
     }
 
