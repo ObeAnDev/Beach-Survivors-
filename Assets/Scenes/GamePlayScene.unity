@@ -1071,7 +1071,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 352231804}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657125523}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadSceneByName
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ManuScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &352231804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3008,6 +3020,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 231508035753552438, guid: a4cd36ab206f20548a7cf362d81e1e46,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 231508035753552438, guid: a4cd36ab206f20548a7cf362d81e1e46,
+        type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -3086,6 +3103,11 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 190666440}
+    - target: {fileID: 2844139732522868840, guid: a4cd36ab206f20548a7cf362d81e1e46,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 3275
+      objectReference: {fileID: 0}
     - target: {fileID: 3205759473572198356, guid: a4cd36ab206f20548a7cf362d81e1e46,
         type: 3}
       propertyPath: m_Mesh
@@ -3101,31 +3123,36 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1034790906}
+    - target: {fileID: 3564864238588865408, guid: a4cd36ab206f20548a7cf362d81e1e46,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 1466
+      objectReference: {fileID: 0}
+    - target: {fileID: 5513568588558473342, guid: a4cd36ab206f20548a7cf362d81e1e46,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5561793017472135800, guid: a4cd36ab206f20548a7cf362d81e1e46,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1859051240}
+    - target: {fileID: 5561793017472135800, guid: a4cd36ab206f20548a7cf362d81e1e46,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 7389
+      objectReference: {fileID: 0}
     - target: {fileID: 6525748943774745168, guid: a4cd36ab206f20548a7cf362d81e1e46,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1042950177}
-    - target: {fileID: 6525748943774745168, guid: a4cd36ab206f20548a7cf362d81e1e46,
-        type: 3}
-      propertyPath: m_VersionIndex
-      value: 2509
-      objectReference: {fileID: 0}
     - target: {fileID: 6529883470817032800, guid: a4cd36ab206f20548a7cf362d81e1e46,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 805476147}
-    - target: {fileID: 6529883470817032800, guid: a4cd36ab206f20548a7cf362d81e1e46,
-        type: 3}
-      propertyPath: m_VersionIndex
-      value: 2509
-      objectReference: {fileID: 0}
     - target: {fileID: 7282113943763276716, guid: a4cd36ab206f20548a7cf362d81e1e46,
         type: 3}
       propertyPath: m_Mesh
@@ -3616,6 +3643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1657125521}
   - component: {fileID: 1657125522}
+  - component: {fileID: 1657125523}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -3660,6 +3688,18 @@ MonoBehaviour:
   healthSlider: {fileID: 1916666551}
   levelText: {fileID: 852595559}
   coinText: {fileID: 1401350569}
+--- !u!114 &1657125523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657125520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e45f52fa0fb64488d1cdd04fb9ffd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1669745958
 GameObject:
   m_ObjectHideFlags: 0
@@ -3833,7 +3873,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1704404827}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657125523}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadSceneByName
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ManuScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1704404827
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2104,6 +2104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5527891475232032000}
+  - component: {fileID: 589378407864250826}
   m_Layer: 0
   m_Name: WaterGun
   m_TagString: Untagged
@@ -2128,3 +2129,15 @@ Transform:
   - {fileID: 7426878471468853951}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &589378407864250826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7555576066043518712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1af04ec5323f2848ae1477465549228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
