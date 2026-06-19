@@ -326,13 +326,14 @@ GameObject:
   - component: {fileID: 121838113}
   - component: {fileID: 121838115}
   - component: {fileID: 121838114}
+  - component: {fileID: 121838116}
   m_Layer: 5
   m_Name: Upgrade Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &121838113
 RectTransform:
   m_ObjectHideFlags: 0
@@ -391,6 +392,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121838112}
   m_CullTransparentMesh: 1
+--- !u!114 &121838116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121838112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b90493249063044a85b2370bfcceb43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrades: []
+  contentPanel: {fileID: 0}
+  cardPrefab: {fileID: 0}
 --- !u!1 &142972831
 GameObject:
   m_ObjectHideFlags: 0
