@@ -51,9 +51,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291ae1f53e5982c4f9e98b84806d427e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgConfig: {fileID: 0}
-  cardText: {fileID: 5765395252123424751}
-  imageCard: {fileID: 4273753868832936342}
+  data: {fileID: 0}
+  text: {fileID: 5765395252123424751}
+  image: {fileID: 4273753868832936342}
+  button: {fileID: 1241710972538189444}
 --- !u!1 &5244726414081533756
 GameObject:
   m_ObjectHideFlags: 0

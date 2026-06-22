@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60781d32f9dbbf047abc79b7900aafc5, type: 3}
   m_Name: WeaponChange1
   m_EditorClassIdentifier: 
-  upgradeName: 
-  cardText: 
+  upgradeName: Water Gun
+  cardText: Adds water gun
   cardImage: {fileID: 0}
-  value: 0
+  upgradeType: 1
+  statType: 0
+  statModifier: 0
+  gamePrefab: {fileID: 5931353719166701975, guid: 3932e8e7dca80974a8138f099f60c95e,
+    type: 3}
+  targetWeaponName: 
+  damageIncrease: 0

@@ -5,7 +5,11 @@ using UnityEngine;
 public abstract class PlayerWeapon : MonoBehaviour
 {
     [SerializeField] float damage;
-    public float Damage { get; set; }
+    public float Damage
+    {
+        get { return damage; }
+        set { damage = value; }
+    }
 
     [SerializeField] float range;
     public float Range => range;

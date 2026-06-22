@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60781d32f9dbbf047abc79b7900aafc5, type: 3}
   m_Name: CharacterUpgrade1
   m_EditorClassIdentifier: 
-  upgradeName: 
-  cardText: 
+  upgradeName: 'Speed Bost '
+  cardText: + 1 Speed
   cardImage: {fileID: 0}
-  value: 0
+  upgradeType: 0
+  statType: 1
+  statModifier: 1
+  gamePrefab: {fileID: 0}
+  targetWeaponName: 
+  damageIncrease: 0

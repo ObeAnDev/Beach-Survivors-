@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60781d32f9dbbf047abc79b7900aafc5, type: 3}
   m_Name: WeaponUpgrade1
   m_EditorClassIdentifier: 
-  upgradeName: 
-  cardText: 
+  upgradeName: Upgrade Fists
+  cardText: + 2 hand damage
   cardImage: {fileID: 0}
-  value: 0
+  upgradeType: 2
+  statType: 0
+  statModifier: 0
+  gamePrefab: {fileID: 0}
+  targetWeaponName: Hand
+  damageIncrease: 2

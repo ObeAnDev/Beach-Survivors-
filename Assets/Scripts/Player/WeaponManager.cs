@@ -6,8 +6,8 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager instance;
 
-    private Transform weaponParent;
-    private List<PlayerWeapon> activeWeapons = new List<PlayerWeapon>();
+    [SerializeField]private Transform weaponParent;
+    [SerializeField]private List<PlayerWeapon> activeWeapons = new List<PlayerWeapon>();
     private void Awake()
     {
         instance = this;
