@@ -8,27 +8,54 @@ public class PlayerRangedWeapon : PlayerWeapon
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireRate = 0.5f;
     [SerializeField] private float attackRange = 10f;
+    [SerializeField] private LayerMask groundLayer; // Слой земли/пола, куда может указывать мышь
 
     private bool isCooldown = false;
+    private Camera mainCamera;
 
     public override void Init()
     {
         isCooldown = false;
+        mainCamera = Camera.main; // Кэшируем главную камеру для оптимизации
     }
 
     public override void Attack() { }
 
     private void Update()
     {
-        Transform targetEnemy = FindClosestEnemy();
+        // Поворачиваем оружие/игрока в сторону мышки
+        RotateTowardsMouse();
 
-        if (targetEnemy != null)
+        // Стреляем автоматически, если зажата левая кнопка мыши (или используй GetButtonDown)
+        if (Input.GetButton("Fire1") && !isCooldown)
         {
-            RotateTowardsTarget(targetEnemy);
+            StartCoroutine(FireRoutine());
+        }
+    }
 
-            if (!isCooldown)
+    private void RotateTowardsMouse()
+    {
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+            if (mainCamera == null) return;
+        }
+
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
+        {
+            Vector3 direction = hit.point - transform.position;
+            direction.y = 0;
+
+            if (direction != Vector3.zero)
             {
-                StartCoroutine(FireRoutine());
+                // Умножаем направление на -1, чтобы развернуть объект на 180 градусов по Y
+                direction = -direction;
+
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                transform.rotation = lookRotation;
             }
         }
     }
@@ -45,43 +72,7 @@ public class PlayerRangedWeapon : PlayerWeapon
         isCooldown = false;
     }
 
-    private Transform FindClosestEnemy()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange);
-
-        Transform closestEnemy = null;
-        float closestDistance = Mathf.Infinity;
-
-        foreach (var collider in colliders)
-        {
-            if (collider.CompareTag("Enemy"))
-            {
-                float distanceToEnemy = Vector3.Distance(transform.position, collider.transform.position);
-
-                if (distanceToEnemy < closestDistance)
-                {
-                    closestDistance = distanceToEnemy;
-                    closestEnemy = collider.transform;
-                }
-            }
-        }
-
-        return closestEnemy;
-    }
-
-    private void RotateTowardsTarget(Transform target)
-    {
-        Vector3 direction = target.position - transform.position;
-
-        direction.y = 0;
-
-        if (direction != Vector3.zero)
-        {
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-
-            transform.rotation = lookRotation;
-        }
-    }
+    // Метод FindClosestEnemy удален, так как автоприцеливание больше не требуется
 
     private void OnDrawGizmosSelected()
     {
