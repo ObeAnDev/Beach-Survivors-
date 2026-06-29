@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60781d32f9dbbf047abc79b7900aafc5, type: 3}
-  m_Name: CharacterUpgrade1
+  m_Name: WeaponUpgrade1.2
   m_EditorClassIdentifier: 
-  upgradeName: 'Speed Boost '
-  cardText: + 1 Speed
+  upgradeName: Water shotgun
+  cardText: 'Upgrade your gun to shotgun
+
+'
   cardImage: {fileID: 0}
-  upgradeType: 0
-  statType: 1
-  statModifier: 1
+  upgradeType: 1
+  statType: 0
+  statModifier: 0
   gamePrefab: {fileID: 0}
   targetWeaponName: 
   damageIncrease: 0

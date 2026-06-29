@@ -158,6 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976bef2a22a3e8f4b9b15644476c9701, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnManager: {fileID: 0}
   whatInst:
   - {fileID: 1167881250187120728, guid: ad6dad037ac3958409fd0c048d531ffe, type: 3}
   - {fileID: 7754350624064914511, guid: f10c6c0d72373b04b9972a8a2c8f83c7, type: 3}
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5.5
-  attackRate: 2
+  attackRate: 0.5
   timer: 0
 --- !u!54 &2397832840357890304
 Rigidbody:
