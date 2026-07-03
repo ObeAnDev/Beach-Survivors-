@@ -6477,11 +6477,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 227017306044737262, guid: c54122827fd85954a84428c416239aef,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 227017306044737262, guid: c54122827fd85954a84428c416239aef,
-        type: 3}
       propertyPath: m_VersionIndex
       value: 3278
       objectReference: {fileID: 0}
@@ -6491,11 +6486,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1462132594025624829, guid: c54122827fd85954a84428c416239aef,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1523936511457045766, guid: c54122827fd85954a84428c416239aef,
         type: 3}
       propertyPath: m_Mesh
       value: 
@@ -6579,11 +6569,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaterGun
-      objectReference: {fileID: 0}
-    - target: {fileID: 7598021471903724798, guid: c54122827fd85954a84428c416239aef,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7598021471903724798, guid: c54122827fd85954a84428c416239aef,
         type: 3}

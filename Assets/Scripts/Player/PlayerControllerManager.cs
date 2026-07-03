@@ -1,64 +1,83 @@
- using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerControllerManager : MonoBehaviour
 {
-    [SerializeField] float speed;
-    public float Speed { get { return speed; } set { speed = value; } }
+    [Header("Movement")]
+    [SerializeField] public float Speed = 7f;
 
-    [SerializeField] float rotationSpeed;
-    public float RotationSpeed => rotationSpeed;
+    [Header("Constraints")]
+    [SerializeField] private float minZ = -7.5f;
+    [SerializeField] private float maxZ = 7.5f;
 
-    Rigidbody rb;
+    [Header("References")]
+    [SerializeField] private Transform playerModel;
 
-    public Transform playerModel;
-
-
-    public float moveSpeed = 7f;
-
-    public float minZ = -7.5f;
-    public float maxZ = 7.5f;
-
-    private Vector3 moveDirection;
-
+    private Rigidbody rb;
+    private Vector3 moveInput;
+    private Camera mainCamera;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        mainCamera = Camera.main;
+
+
+        rb.freezeRotation = true;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         float moveHorizontal = Input.GetAxisRaw("Horizontal");
         float moveVertical = Input.GetAxisRaw("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical).normalized;
-
-        rb.velocity = new Vector3(movement.x * speed, rb.velocity.y, movement.z * speed);
-
-        if (moveHorizontal != 0 || moveVertical != 0)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(movement);
-            playerModel.rotation = Quaternion.RotateTowards(playerModel.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        }
-        MovePlayer();
+        moveInput = new Vector3(moveHorizontal, 0f, moveVertical).normalized;
     }
+
+    void FixedUpdate()
+    {
+        MovePlayer();
+
+        LookAtMouse();
+    }
+
     void MovePlayer()
     {
-        Vector3 targetPosition = transform.position + moveDirection * moveSpeed * Time.deltaTime;
+        Vector3 velocity = new Vector3(moveInput.x * Speed, rb.velocity.y, moveInput.z * Speed);
+        rb.velocity = velocity;
 
-        targetPosition.z = Mathf.Clamp(targetPosition.z, minZ, maxZ);
-
-        transform.position = targetPosition;
-
-        if (moveDirection != Vector3.zero)
+        if (transform.position.z < minZ || transform.position.z > maxZ)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 15f * Time.deltaTime);
+            float clampedZ = Mathf.Clamp(transform.position.z, minZ, maxZ);
+            rb.position = new Vector3(transform.position.x, transform.position.y, clampedZ);
         }
     }
+
+    void LookAtMouse()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+
+        Plane groundPlane = new Plane(Vector3.up, transform.position);
+
+        float rayDistance;
+
+        if (groundPlane.Raycast(ray, out rayDistance))
+        {
+            Vector3 lookPoint = ray.GetPoint(rayDistance);
+
+            Vector3 lookDirection = new Vector3(lookPoint.x, transform.position.y, lookPoint.z) - transform.position;
+
+            if (lookDirection != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+
+                transform.rotation = targetRotation;
+            }
+        }
+    }
+
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<ItemLoot>(out ItemLoot item))
