@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -18,9 +19,24 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI levelText;
     public TextMeshProUGUI coinText;
 
+    [SerializeField] private TextMeshProUGUI timerText;
+    private float survivalTime;
+    public float SurvivalTime => survivalTime;
+
+    [SerializeField] private TextMeshProUGUI survivalTimeText;
+
+    [SerializeField] private TextMeshProUGUI killText;
+
+    private void Update()
+    {
+        UpdateTimer();
+    }
+
     private void Awake()
     {
         Instance = this;
+
+        survivalTime = 0f;
 
         Time.timeScale = 1f;
     }
@@ -34,6 +50,7 @@ public class UIManager : MonoBehaviour
         PlayerEventBus.OnHealthChanged += UpdateHealth;
         PlayerEventBus.OnLevelChanged += UpdateLevel;
         PlayerEventBus.OnCoinChange += UpdateCoins;
+        PlayerEventBus.OnKillCountChanged += UpdateKills;
     }
 
     private void OnDisable()
@@ -45,6 +62,28 @@ public class UIManager : MonoBehaviour
         PlayerEventBus.OnHealthChanged -= UpdateHealth;
         PlayerEventBus.OnLevelChanged -= UpdateLevel;
         PlayerEventBus.OnCoinChange -= UpdateCoins;
+        PlayerEventBus.OnKillCountChanged -= UpdateKills;
+
+    }
+
+    void UpdateTimer()
+    {
+        survivalTime += Time.deltaTime;
+
+        int minutes = Mathf.FloorToInt(survivalTime / 60);
+        int seconds = Mathf.FloorToInt(survivalTime % 60);
+
+        if (timerText != null)
+        {
+            timerText.text = $"{minutes:00}:{seconds:00}";
+        }
+    }
+    public string GetFormattedTime()
+    {
+        int minutes = Mathf.FloorToInt(survivalTime / 60);
+        int seconds = Mathf.FloorToInt(survivalTime % 60);
+
+        return $"{minutes:00}:{seconds:00}";
     }
 
     public void OpenUpgradePanel()
@@ -69,6 +108,18 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
 
         gameOverPanel.SetActive(true);
+
+        if (survivalTimeText != null)
+        {
+            survivalTimeText.text = "You survived: " + GetFormattedTime();
+        }
+
+        if (killText != null)
+        {
+            killText.text =
+                "Enemies killed: " + KillManager.instance.KillCount;
+        }
+
     }
 
     public void RestartGame()
@@ -98,5 +149,12 @@ public class UIManager : MonoBehaviour
     void UpdateCoins(int coins)
     {
         coinText.text = coins.ToString();
+    }
+    void UpdateKills(int kills)
+    {
+        if (killText != null)
+        {
+            killText.text = "Kills: " + kills;
+        }
     }
 }

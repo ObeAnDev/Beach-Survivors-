@@ -10,4 +10,6 @@ public static class PlayerEventBus
     public static Action<float> OnHealthChanged;
 
     public static Action OnPlayerDeath;
+
+    public static Action<int> OnKillCountChanged;
 }
