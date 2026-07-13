@@ -13,15 +13,10 @@ public class KillManager : MonoBehaviour
     {
         instance = this;
     }
+
     public void AddKill()
     {
         killCount++;
-        PlayerEventBus.OnKillCountChanged?.Invoke(killCount);
-    }
-
-    public void ResetKills()
-    {
-        killCount = 0;
-        PlayerEventBus.OnKillCountChanged?.Invoke(killCount);
+        Debug.Log("Kills: " + killCount);
     }
 }

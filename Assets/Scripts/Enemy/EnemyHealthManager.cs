@@ -27,9 +27,13 @@ public class EnemyHealthManager : MonoBehaviour
     void Die()
     {
         DropOn();
-        Destroy(gameObject);
-        KillManager.instance.AddKill();
+
+        if (KillManager.instance != null)
+            KillManager.instance.AddKill();
+
         spawnManager.RemoveOne();
+
+        Destroy(gameObject);
     }
     public void DropOn()
     {

@@ -64,7 +64,11 @@ public class PlayerRangedWeapon : PlayerWeapon
     {
         isCooldown = true;
 
-        Projectile bullet = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        Projectile bullet = ProjectilePool.instance.Get();
+
+        bullet.transform.position = firePoint.position;
+        bullet.transform.rotation = firePoint.rotation;
+
         bullet.Init(Damage);
 
         yield return new WaitForSeconds(fireRate);

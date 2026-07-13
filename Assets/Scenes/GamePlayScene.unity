@@ -2376,6 +2376,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495932194}
   m_CullTransparentMesh: 1
+--- !u!1 &504634298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 504634300}
+  - component: {fileID: 504634299}
+  m_Layer: 0
+  m_Name: ProjectilePool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &504634299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504634298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a517107a4b2f2841a19a3ca98ee509d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePref: {fileID: 3022532235478032621, guid: 3a8314a5239a0294ba0aca3795d9f755,
+    type: 3}
+  startPoolSize: 30
+--- !u!4 &504634300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504634298}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 967.939, y: 487.51312, z: -6.7002134}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &544992150
 GameObject:
   m_ObjectHideFlags: 0
@@ -4215,6 +4262,7 @@ GameObject:
   - component: {fileID: 1657125521}
   - component: {fileID: 1657125522}
   - component: {fileID: 1657125523}
+  - component: {fileID: 1657125524}
   m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
@@ -4272,6 +4320,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70e45f52fa0fb64488d1cdd04fb9ffd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1657125524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657125520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd1fec96dad4a340a1ec0aedaada197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1668598993
@@ -6337,3 +6397,4 @@ SceneRoots:
   - {fileID: 764847107}
   - {fileID: 565492137}
   - {fileID: 256907324}
+  - {fileID: 504634300}
