@@ -41,6 +41,8 @@ public class SpawnManager : MonoBehaviour
         GameObject enemyObj = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
         enemyHealthManager = enemyObj.GetComponent<EnemyHealthManager>();
         enemyHealthManager.spawnManager = this;
+        enemyObj.GetComponent<Renderer>().material.color = Random.ColorHSV();
+
 
         spawnAmountCrr++;
     }

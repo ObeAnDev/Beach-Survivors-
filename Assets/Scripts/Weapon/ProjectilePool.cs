@@ -6,6 +6,8 @@ public class ProjectilePool : MonoBehaviour
 {
     public static ProjectilePool instance;
 
+    public Transform firePoint;
+
     [SerializeField] private Projectile projectilePref;
     [SerializeField] private int startPoolSize = 30;
 
@@ -17,7 +19,7 @@ public class ProjectilePool : MonoBehaviour
 
         for (int i =0; i < startPoolSize; i++)
         {
-            Projectile p = Instantiate(projectilePref, transform);
+            Projectile p = Instantiate(projectilePref, firePoint.position, firePoint.rotation);
 
             p.gameObject.SetActive(false);
             pool.Enqueue(p);
@@ -33,7 +35,7 @@ public class ProjectilePool : MonoBehaviour
         }
         else
         {
-            p = Instantiate(projectilePref, transform);
+            p = Instantiate(projectilePref, firePoint.position, firePoint.rotation);
         }
          
         p.gameObject.SetActive(true);

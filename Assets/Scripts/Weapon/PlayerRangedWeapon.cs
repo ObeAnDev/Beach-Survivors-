@@ -76,8 +76,6 @@ public class PlayerRangedWeapon : PlayerWeapon
         isCooldown = false;
     }
 
-    // Метод FindClosestEnemy удален, так как автоприцеливание больше не требуется
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
