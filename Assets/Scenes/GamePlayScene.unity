@@ -5880,7 +5880,7 @@ PrefabInstance:
     - target: {fileID: 104033729589100144, guid: 3932e8e7dca80974a8138f099f60c95e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 1601
+      value: 1604
       objectReference: {fileID: 0}
     - target: {fileID: 161030069229605965, guid: 3932e8e7dca80974a8138f099f60c95e,
         type: 3}
@@ -5905,7 +5905,7 @@ PrefabInstance:
     - target: {fileID: 1578905610090182949, guid: 3932e8e7dca80974a8138f099f60c95e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2596
+      value: 2599
       objectReference: {fileID: 0}
     - target: {fileID: 1689132467465598360, guid: 3932e8e7dca80974a8138f099f60c95e,
         type: 3}
@@ -5915,7 +5915,7 @@ PrefabInstance:
     - target: {fileID: 1689132467465598360, guid: 3932e8e7dca80974a8138f099f60c95e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 3410
+      value: 3413
       objectReference: {fileID: 0}
     - target: {fileID: 2574254495611583860, guid: 3932e8e7dca80974a8138f099f60c95e,
         type: 3}
@@ -5940,7 +5940,7 @@ PrefabInstance:
     - target: {fileID: 4473245730443895977, guid: 3932e8e7dca80974a8138f099f60c95e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 2596
+      value: 2599
       objectReference: {fileID: 0}
     - target: {fileID: 4945399513796252603, guid: 3932e8e7dca80974a8138f099f60c95e,
         type: 3}
@@ -6045,7 +6045,7 @@ PrefabInstance:
     - target: {fileID: 9017928612097599368, guid: 3932e8e7dca80974a8138f099f60c95e,
         type: 3}
       propertyPath: m_VersionIndex
-      value: 7524
+      value: 7527
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
