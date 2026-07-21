@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -15,8 +16,19 @@ public class UpgradeCardUI : MonoBehaviour
     {
         data = upgrade;
 
-        text.text = data.cardText;
-        image.sprite = data.cardImage;
+        /*if (data.upgradeType == UpgradeType.UpgradeWeapon)
+        {
+            PlayerRangedWeapon currWeapon = WeaponManager.instance.GetWeaponByName(data.targetWeaponName);
+
+            if (currWeapon != null)
+            {
+                int nextLevel = currWeapon.CurrLevel + 1;
+
+                var levelStats = currWeapon.WeaponData.levelStats.Find(s => s.level == nextLevel);
+                string levelDescription = levelStats.level != 0? levelStats.upgradeDescription: "Weapon ready to evolve!";
+                text.text = $"{data.cardText} (Lvl. {nextLevel}) \n<size = 80%><color = #FFDD88>{levelDescription}</color></size>";
+            }
+        }*/
 
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(Select);

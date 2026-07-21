@@ -129,19 +129,14 @@ public class PlayerRangedWeapon : PlayerWeapon
         // Стреляем количеством снарядов (currentProjCount) веером или по очереди
         for (int i = 0; i < currProjCount; i++)
         {
-            Projectile bullet = ProjectilePool.instance.Get();
-            bullet.transform.position = firePoint.position;
+            WaterProjectile bullet = Instantiate(weaponData.projectilePref, firePoint.position, firePoint.rotation).GetComponent<WaterProjectile>();
 
             // Небольшое смещение угла, если снарядов несколько (эффект дробовика/веера)
-            float angleOffset = (i - (currProjCount - 1) / 2f) * 10f;
-            Quaternion fireRotation = firePoint.rotation * Quaternion.Euler(0, angleOffset, 0);
-            bullet.transform.rotation = fireRotation;
+            float angleOffset = (i - (currProjCount - 1) / 2f) * 15f;
 
-            // Инициализируем снаряд расширенными статами (урон, скорость, пробитие)
-            // bullet.Init(currentDamage, currentProjSpeed, currentPierce); 
-            bullet.Init(currDamage); // Твой базовый метод
-
-            if (currProjCount > 1) yield return new WaitForSeconds(0.05f); // Короткая задержка между очередью
+            Vector3 fireDirection = Quaternion.Euler(0, angleOffset, 0) * firePoint.forward;
+            bullet.Launch(currDamage,currProjSpeed, currPierce, fireDirection, currRange);
+            bullet.transform.rotation = Quaternion.LookRotation(fireDirection);
         }
 
         yield return new WaitForSeconds(Mathf.Max(0.1f, currFireRate));
