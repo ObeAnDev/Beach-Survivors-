@@ -1,7 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class PlayerRangedWeapon : PlayerWeapon
@@ -58,7 +55,7 @@ public class PlayerRangedWeapon : PlayerWeapon
             stats = weaponData.levelStats[weaponData.levelStats.Count - 1];
         }
 
-        currDamage = stats.damage;
+        currDamage = stats.damage + Damage;
         currFireRate = stats.fireRate;
         currRange = stats.attackRange;
         currProjSpeed = stats.projectileSpeed;
@@ -70,6 +67,11 @@ public class PlayerRangedWeapon : PlayerWeapon
             currDamage *= PlayerInventory.instance.GetTotalDamageMultiplier();
             currFireRate *= (1f - PlayerInventory.instance.GetTotalCooldownReduction());
         }
+    }
+
+    public override void RefreshStats()
+    {
+        UpdateCurrStats();
     }
     public void LevelUp()
     {
@@ -96,11 +98,21 @@ public class PlayerRangedWeapon : PlayerWeapon
         }
     }
 
+    // Called by PlayerInventory.EvolveWeapon: swaps this weapon's data to the
+    // evolved form in place and restarts leveling from 1, instead of destroying
+    // and trying to spawn a brand new GameObject.
+    public void Evolve(WeaponData evolvedData)
+    {
+        weaponData = evolvedData;
+        currLevel = 1;
+        UpdateCurrStats();
+    }
+
     private void RotateTowardsMouse()
     {
         if (mainCamera == null)
         {
-             return;
+            return;
         }
 
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
@@ -113,9 +125,6 @@ public class PlayerRangedWeapon : PlayerWeapon
 
             if (direction != Vector3.zero)
             {
-                // Умножаем направление на -1, чтобы развернуть объект на 180 градусов по Y
-                direction = -direction;
-
                 Quaternion lookRotation = Quaternion.LookRotation(direction);
                 transform.rotation = lookRotation;
             }
@@ -131,11 +140,12 @@ public class PlayerRangedWeapon : PlayerWeapon
         {
             WaterProjectile bullet = Instantiate(weaponData.projectilePref, firePoint.position, firePoint.rotation).GetComponent<WaterProjectile>();
 
+
             // Небольшое смещение угла, если снарядов несколько (эффект дробовика/веера)
             float angleOffset = (i - (currProjCount - 1) / 2f) * 15f;
 
             Vector3 fireDirection = Quaternion.Euler(0, angleOffset, 0) * firePoint.forward;
-            bullet.Launch(currDamage,currProjSpeed, currPierce, fireDirection, currRange);
+            bullet.Launch(currDamage, currProjSpeed, currPierce, fireDirection, currRange);
             bullet.transform.rotation = Quaternion.LookRotation(fireDirection);
         }
 
@@ -146,6 +156,6 @@ public class PlayerRangedWeapon : PlayerWeapon
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, currRange > 0 ? currRange: currRange);
+        Gizmos.DrawWireSphere(transform.position, currRange > 0 ? currRange : 0f);
     }
 }

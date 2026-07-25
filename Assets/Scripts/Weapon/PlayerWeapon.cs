@@ -24,4 +24,6 @@ public abstract class PlayerWeapon : MonoBehaviour
 
     public abstract void Init();
 
+    public virtual void RefreshStats() { }
+
 }

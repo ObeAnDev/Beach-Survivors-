@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -48,9 +49,21 @@ public class WeaponManager : MonoBehaviour
             if (weapon.gameObject.name.Contains(weaponName) || weapon.GetType().Name == weaponName)
             {
                 weapon.Damage += damageBonus;
+                weapon.RefreshStats();
 
                 return;
             }
         }
+    }
+    public PlayerRangedWeapon GetWeaponByName(string weaponName)
+    {
+        foreach (var weapon in activeWeapons)
+        {
+            if (weapon is PlayerRangedWeapon rangedWeapon &&(weapon.gameObject.name.Contains(weaponName) || weapon.GetType().Name == weaponName))
+            {
+                return rangedWeapon;
+            }
+        }
+        return null;
     }
 }
