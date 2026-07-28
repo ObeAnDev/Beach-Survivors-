@@ -17,7 +17,7 @@ MonoBehaviour:
 
 '
   cardImage: {fileID: 0}
-  upgradeType: 1
+  upgradeType: 3
   statType: 0
   statModifier: 0
   gamePrefab: {fileID: 0}

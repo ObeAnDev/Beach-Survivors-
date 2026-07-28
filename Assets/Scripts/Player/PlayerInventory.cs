@@ -17,7 +17,7 @@ public class PlayerInventory : MonoBehaviour
     // Метод для карточки повышения уровня оружия
     public void UpgradeWeaponCard(PlayerRangedWeapon weapon)
     {
-        if (activeWeapons.Contains(weapon))
+        if (weapon != null)
         {
             weapon.LevelUp();
         }
@@ -28,6 +28,7 @@ public class PlayerInventory : MonoBehaviour
     {
         activeAttachments.Add(newItem);
         // Пересчитываем статы всего оружия, так как обвес обновился
+
         foreach (var weapon in activeWeapons)
         {
             weapon.UpdateCurrStats();
@@ -58,10 +59,6 @@ public class PlayerInventory : MonoBehaviour
     {
         activeWeapons.Remove(oldWeapon);
 
-        // PlayerRangedWeapon newWeapon = Instantiate(evolvedWeaponPrefab, transform);
-        // activeWeapons.Add(newWeapon);
-        // newWeapon.Init();
-
-        Destroy(oldWeapon.gameObject);
+        oldWeapon.Evolve(evolvedData);
     }
 }

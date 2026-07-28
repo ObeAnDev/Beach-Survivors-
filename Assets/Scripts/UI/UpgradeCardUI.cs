@@ -1,67 +1,143 @@
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class UpgradeCardUI : MonoBehaviour
 {
     public UpgradeSO data;
 
-    public TextMeshProUGUI text;
-    public Image image;
-    public Button button;
+    [Header("UI References")]
+    public TextMeshProUGUI titleText;      // Заголовок (upgradeName)
+    public TextMeshProUGUI descriptionText; // Описание (cardText + дополнительная инфа)
+    public Image image;                    // Иконка карточки
+    public Button button;                  // Кнопка выбора
 
     public void Setup(UpgradeSO upgrade)
     {
         data = upgrade;
 
-        /*if (data.upgradeType == UpgradeType.UpgradeWeapon)
+        // 1. Устанавливаем иконку
+        if (image != null)
         {
-            PlayerRangedWeapon currWeapon = WeaponManager.instance.GetWeaponByName(data.targetWeaponName);
+            image.sprite = data.cardImage;
+            image.enabled = (data.cardImage != null); // Скрываем Image, если картинки нет
+        }
 
-            if (currWeapon != null)
-            {
-                int nextLevel = currWeapon.CurrLevel + 1;
+        // 2. Устанавливаем заголовок
+        if (titleText != null)
+        {
+            titleText.text = !string.IsNullOrEmpty(data.upgradeName) ? data.upgradeName : "Upgrade";
+        }
 
-                var levelStats = currWeapon.WeaponData.levelStats.Find(s => s.level == nextLevel);
-                string levelDescription = levelStats.level != 0? levelStats.upgradeDescription: "Weapon ready to evolve!";
-                text.text = $"{data.cardText} (Lvl. {nextLevel}) \n<size = 80%><color = #FFDD88>{levelDescription}</color></size>";
-            }
-        }*/
+        // 3. Формируем подробный текст описания в зависимости от типа карточки
+        if (descriptionText != null)
+        {
+            descriptionText.text = BuildCardDescription();
+        }
 
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(Select);
+        // 4. Настраиваем нажатие на кнопку
+        if (button != null)
+        {
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(Select);
+        }
+    }
+
+    private string BuildCardDescription()
+    {
+        string baseText = data.cardText;
+
+        switch (data.upgradeType)
+        {
+            case UpgradeType.PlayerStat:
+                // Выводим базовый текст и добавку к характеристикам
+                string sign = data.statModifier >= 0 ? "+" : "";
+                return $"{baseText}\n<color=#88FF88>{data.statType}: {sign}{data.statModifier}</color>";
+
+            case UpgradeType.NewWeapon:
+                // Для нового оружия
+                return $"{baseText}\n<color=#FFDD88>New Weapon Unlocked!</color>";
+
+            case UpgradeType.UpgradeWeapon:
+                // Для прямого увеличения урона оружия
+                return $"{baseText}\n<color=#FF8888>Damage: +{data.damageIncrease}</color>";
+
+            case UpgradeType.LevelUpWeapon:
+                // Динамически получаем уровень оружия и текст следующего уровня
+                if (WeaponManager.instance != null)
+                {
+                    PlayerRangedWeapon weapon = WeaponManager.instance.GetWeaponByName(data.targetWeaponName);
+
+                    if (weapon != null && weapon.WeaponData != null)
+                    {
+                        int nextLevel = weapon.CurrLevel + 1;
+                        var levelStats = weapon.WeaponData.levelStats.Find(s => s.level == nextLevel);
+
+                        if (levelStats.level != 0 && !string.IsNullOrEmpty(levelStats.upgradeDescription))
+                        {
+                            return $"{baseText} (Lvl. {nextLevel})\n<size=85%><color=#FFDD88>{levelStats.upgradeDescription}</color></size>";
+                        }
+                        else
+                        {
+                            return $"{baseText}\n<size=85%><color=#FF55FF>Ready to Evolve!</color></size>";
+                        }
+                    }
+                }
+                return baseText;
+
+            default:
+                return baseText;
+        }
     }
 
     void Select()
     {
-        Debug.Log("Picked: " + data.upgradeName);
+        Debug.Log("Picked: " + (data != null ? data.upgradeName : "Unknown"));
         ApplyUpgrade();
-        UIManager.Instance.CloseUpgradePanel();
 
-        // тут добавишь баффы
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.CloseUpgradePanel();
+        }
     }
+
     void ApplyUpgrade()
     {
-        switch (data.upgradeType) 
+        if (data == null) return;
+
+        switch (data.upgradeType)
         {
             case UpgradeType.PlayerStat:
                 ApplyPlayerStatUpgrade();
                 break;
 
             case UpgradeType.NewWeapon:
-                if (data.gamePrefab != null)
+                if (data.gamePrefab != null && WeaponManager.instance != null)
                 {
                     WeaponManager.instance.EquipNewWeapon(data.gamePrefab);
                 }
                 break;
+
             case UpgradeType.UpgradeWeapon:
-                WeaponManager.instance.UpgradeExistingWeapon(data.targetWeaponName, data.damageIncrease);
+                if (WeaponManager.instance != null)
+                {
+                    WeaponManager.instance.UpgradeExistingWeapon(data.targetWeaponName, data.damageIncrease);
+                }
+                break;
+
+            case UpgradeType.LevelUpWeapon:
+                if (WeaponManager.instance != null)
+                {
+                    PlayerRangedWeapon weaponToLevel = WeaponManager.instance.GetWeaponByName(data.targetWeaponName);
+                    if (weaponToLevel != null && PlayerInventory.instance != null)
+                    {
+                        PlayerInventory.instance.UpgradeWeaponCard(weaponToLevel);
+                    }
+                }
                 break;
         }
-
     }
+
     void ApplyPlayerStatUpgrade()
     {
         PlayerControllerManager playerController = FindObjectOfType<PlayerControllerManager>();

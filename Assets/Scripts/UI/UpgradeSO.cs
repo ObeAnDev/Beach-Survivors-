@@ -4,8 +4,9 @@ public enum UpgradeType
     PlayerStat,
     NewWeapon,
     UpgradeWeapon,
+    LevelUpWeapon,
 }
-public enum PlayerStatType 
+public enum PlayerStatType
 {
     None,
     Speed,

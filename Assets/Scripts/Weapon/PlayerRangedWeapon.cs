@@ -125,7 +125,7 @@ public class PlayerRangedWeapon : PlayerWeapon
 
             if (direction != Vector3.zero)
             {
-                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                Quaternion lookRotation = Quaternion.LookRotation(-direction);
                 transform.rotation = lookRotation;
             }
         }

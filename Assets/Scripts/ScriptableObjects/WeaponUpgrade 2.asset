@@ -15,7 +15,7 @@ MonoBehaviour:
   upgradeName: Upgrade beach ball
   cardText: + 2 beach balls
   cardImage: {fileID: 0}
-  upgradeType: 1
+  upgradeType: 2
   statType: 0
   statModifier: 0
   gamePrefab: {fileID: 4738169299806589994, guid: 812ab7d5b799b9747992d17f3ec62792,

@@ -46,14 +46,21 @@ public class WeaponManager : MonoBehaviour
     {
         foreach (var weapon in activeWeapons)
         {
+            // 1. Check if the element itself or its GameObject has been destroyed
+            if (weapon == null || weapon.gameObject == null) continue;
+
+            // 2. Check if weaponName is null to avoid string method exceptions
+            if (string.IsNullOrEmpty(weaponName)) return;
+
             if (weapon.gameObject.name.Contains(weaponName) || weapon.GetType().Name == weaponName)
             {
                 weapon.Damage += damageBonus;
                 weapon.RefreshStats();
-
                 return;
             }
         }
+
+        Debug.LogWarning($"WeaponManager: Could not find weapon matching '{weaponName}' to upgrade.");
     }
     public PlayerRangedWeapon GetWeaponByName(string weaponName)
     {
