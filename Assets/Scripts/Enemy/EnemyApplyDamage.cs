@@ -24,7 +24,7 @@ public class EnemyApplyDamage : MonoBehaviour
         {
             if (timer >= attackRate)
             {
-                playerHealthManager.TakeDamage(Damage);
+                playerHealthManager.TakeDamage(Damage, gameObject);
                 timer = 0;
             }
         }
