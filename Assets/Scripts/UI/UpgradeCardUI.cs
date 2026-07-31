@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.ShaderGraph.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,8 +53,16 @@ public class UpgradeCardUI : MonoBehaviour
             case UpgradeType.PlayerStat:
                 // Выводим базовый текст и добавку к характеристикам
                 string sign = data.statModifier >= 0 ? "+" : "";
-                return $"{baseText}\n<color=#88FF88>{data.statType}: {sign}{data.statModifier}</color>";
 
+                if (data.statType == PlayerStatType.PercentArmor || data.statType == PlayerStatType.BlockChance)
+                {
+                    return $"{baseText}\n<color = #88FFFF>{data.statType}: {sign}{data.statModifier * 100}%</color>";
+                }
+                else if (data.statType == PlayerStatType.FlatArmor)
+                {
+                    return $"{baseText}\n<color = #88FFFF>Armor: {sign}{data.statModifier} damage block</color>";
+                }
+                return $"{baseText}\n<color=#88FF88>{data.statType}: {sign}{data.statModifier}</color>";
             case UpgradeType.NewWeapon:
                 // Для нового оружия
                 return $"{baseText}\n<color=#FFDD88>New Weapon Unlocked!</color>";
@@ -151,5 +160,21 @@ public class UpgradeCardUI : MonoBehaviour
         {
             playerHealth.maxHealth += data.statModifier;
         }
+        if (ArmorManager.inInstance != null)
+        {
+            if (data.statType == PlayerStatType.FlatArmor)
+            {
+                ArmorManager.inInstance.AddFlatArmor(data.statModifier);
+            }
+            else if (data.statType == PlayerStatType.PercentArmor)
+            {
+                ArmorManager.inInstance.AddPercentArmor(data.statModifier);
+            }
+            else if (data.statType == PlayerStatType.BlockChance)
+            {
+                ArmorManager.inInstance.AddBlockChance(data.statModifier);
+            }
+        }
+
     }
 }

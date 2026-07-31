@@ -9,8 +9,16 @@ public class PlayerHealthManager : MonoBehaviour
     public float HealthPercent => health / maxHealth;
     public float Health => health;
 
-    public void TakeDamage(float damage)
+
+
+    public void TakeDamage(float damage, GameObject attacker)
     {
+        if (damage <= 0)
+            return;
+
+        if (ArmorManager.inInstance != null)
+            damage = ArmorManager.inInstance.CalculateIncomingDamage(damage,attacker);
+
         if (damage <= 0)
             return;
 

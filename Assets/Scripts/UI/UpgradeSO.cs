@@ -11,6 +11,9 @@ public enum PlayerStatType
     None,
     Speed,
     MaxHealth,
+    FlatArmor,
+    PercentArmor,
+    BlockChance
 }
 
 
